@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>FeatureDetect</title>
+    </head>
+    <body>
+        <header>
+            <h1>Use Console of Firefox Firebug, or Google Chrome</h1>
+        </header>
+        <script src="../library/ClientFeatureDetect.js"></script>
+        <script type="text/javascript">   
+            /* Reference
+             * http://getfirebug.com/logging 
+             * http://getfirebug.com/wiki/index.php/Console_API#console.log.28object.5B.2C_object.2C_....5D.29
+             * */
+            
+            console.time("ClientFeatureDetect");                
+            console.group("ClientFeatureDetect Functions");
+            
+            console.info("JavaEnabled()");
+            console.debug(JavaEnabled());
+  
+            console.info("mimetypeExist( 'application/x-ica' )");
+            console.debug( mimetypeExist( 'application/x-ica' ));
+            
+            
+            console.groupEnd("ClientFeatureDetect Functions"); 
+            console.timeEnd("ClientFeatureDetect");
+                
+            console.time("navigator");                
+            console.group("navigator");
+            
+            console.info("navigator");
+            console.debug(navigator);
+                
+            console.info("navigator.appCodeName");
+            console.debug(navigator.appCodeName);
+                
+            console.info("navigator.appName");
+            console.debug(navigator.appName);
+                
+            console.info("navigator.appCodeName");
+            console.debug(navigator.appCodeName);
+                
+            console.info("navigator.appVersion");
+            console.debug(navigator.appVersion);
+                
+            console.info("navigator.cookieEnabled");
+            console.debug(navigator.cookieEnabled);
+                
+            console.info("navigator.userAgent");
+            console.debug(navigator.userAgent);
+
+            console.groupEnd("navigator"); 
+            console.timeEnd("navigator");
+                
+        </script>
+
+        <footer>
+            Check validation <a href="http://html5.validator.nu/">HTML5</a> and <a href="http://jigsaw.w3.org/css-validator/#validate_by_uri">CSS3</a>
+        </footer>
+    </body>
+</html>
