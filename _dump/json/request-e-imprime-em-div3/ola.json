@@ -1,0 +1,20 @@
+[
+    {"id":1,
+     "name":"Joselito Silveira",
+     "age":22,
+     "sex":"m",
+     "published":1,
+     "datetime":"2011-12-23 17:44:43"},
+    {"id":2,
+     "name":"Maria Maya",
+     "age":54,
+     "sex":"f",
+     "published":0,
+     "datetime":"2011-12-23 17:48:13"},
+    {"id":3,
+     "name":"Chaves da Vila",
+     "age":8,
+     "sex":"m",
+     "published":1,
+     "datetime":"2011-12-23 17:48:24"}
+]

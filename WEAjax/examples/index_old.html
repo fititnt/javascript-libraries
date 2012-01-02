@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>WEAjax</title>
+		<script src="../../3rd/mootools-core-1.4.2-full-nocompat.js"></script>
+	</head>
+	<body>
+		<div id="json-output">Sim, mestre! O que deseja?</div>
+		<script>
+			window.addEvent('domready', function(){
+				
+				var we = new WEAjaxList({url:'../../_data/dataToJson.php'});
+				//we.test;
+				//we.getData();
+				//console.log();
+				//we.getData({'table':'joomla', 'select': 'name, version, date','where': 'support = 1'});//Todos de um estado
+				//we.getData({'queryraw':'SELECT DISTINCT uf FROM cidades'})//pega somente as cidades
+				//we.getData({'select':'DISTINCT uf', 'table':'cidades', 'resulttype':'array','resultparam':'uf'})//pega somente as cidades, rm um array simples
+				//console.log(JSON.decode(we.getData({'select':'DISTINCT uf', 'table':'cidades', 'resulttype':'array','resultparam':'uf'})));
+				//we.getData({'select':'DISTINCT uf', 'table':'cidades', 'resulttype':'array','resultparam':'uf'});
+				//console.log(we.options.query);
+				we.setData(2);
+				we.setSelect({
+					'select':{
+						'id': 'estados'
+					},
+					'remote': {
+						'select':'DISTINCT uf', 
+						'table':'cidades', 
+						'resulttype':'array',
+						'resultparam':'uf'
+					}}
+				);
+
+				//console.log(we.options);
+			   //console.log(we.options.select);
+			   //we.setSelectOpt({'id':'meuid'});
+				//console.log(we.options.select);	
+				//console.dir(we.options);
+				//console.log(we.options)
+				//console.log(typeof we.options.we);
+				//console.dir(we.options.we);
+				//console.log(we.options.we.remoteData);
+				//console.dir(we.options.we.remoteData);
+				//console.debug(we.get(this));
+				//new Element('option', {'value': 0, 'text':'Select states firsaaat'}).inject(document.id('uf'));
+			});
+		</script>
+
+
+		<form>
+			<select id="uf">
+				<option value="">- Selecione o Estado -</option>
+			</select>
+			<br />
+			<select id="estados" disabled>
+				<option value="">- Selecione a Cidade -</option>
+			</select>
+		</form>
+
+
+
+		<script src="../library/WEAjax.js"></script>
+	</body> 
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>#1 - JSON Request e imprime em div</title>
+		<script src="../../../3rd/mootools-core-1.4.2-full-nocompat.js"></script>
+	</head>
+	<body>
+		<div id="json-output">Sim, mestre! O que deseja?</div>
+		<script>
+			window.addEvent('domready', function(){
+				
+				var jsonRequest = new Request.JSON({url: 'ola.json', onSuccess: function(ola){
+						Array.each(ola, function(item, i){
+							$('json-output').adopt(new Element('div', {text: item.name}));
+							console.log(item.id, item.name, item.age, item.sex, item.published, item.datetime);
+						});
+					}}).get({});				
+			});
+		</script>
+		
+	</body> 
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>#2 - JSON Request e imprime em div 2</title>
+		<script src="../../../3rd/mootools-core-1.4.2-full-nocompat.js"></script>
+	</head>
+	<body>
+		<div id="json-output">Sim, mestre! O que deseja?</div>
+		<script>
+			window.addEvent('domready', function(){
+				
+				
+				function DinamicFieldCreate(addId){
+					var n = 0;
+					var baseId = addId.replace('_new','');
+					var container = document.id(baseId+'_container');
+					var lastId  = container.getChildren().getLast().get('id');
+					var lastN = lastId.charAt( lastId.length-1 ).toInt();
+					if(!isNaN(lastN.toInt())){
+						n = 1 + lastN.toInt();// = n + lastN.toInt();
+					} else {
+						n  = '';
+					}					
+					container.adopt(new Element("span" , {"style":"clear:left;"}));
+					container.adopt(new Element("input", {"id": baseId + n,"name": baseId + n } ));
+					container.adopt(new Element("span",{"id":baseId + "_remove" + n ,html: 'Remove', events: { click: function(){DinamicFieldRemove(this.id)}}} ));
+				}
+				
+				function DinamicFieldRemove(removeId){
+					document.id(removeId).dispose();
+					fieldId = removeId.replace('_remove','');
+					document.id(fieldId).value = '';
+					document.id(fieldId).setStyle('display', 'none');
+				}
+				
+				$$(".dinamicfield_new").addEvent("click", function(){DinamicFieldCreate(this.id)});
+				$$(".dinamicfield_remove").addEvent("click", function(){DinamicFieldRemove(this.id)});
+				
+
+				//$("jform_telefones_field_new").addEvent("click", function(){alert("cria")});
+				//$("jform_telefones_field_new").addEvent("click", function(){createjform_telefonesField("jform_telefones_container")});
+			});
+		</script>
+
+		<ul>
+			<li>
+				<label id="jform_FIELDNAME-lbl" class="" for="jform_telefones" aria-invalid="false">
+					Telefone
+					<span id="jform_FIELDNAME_new" class="dinamicfield_new"> (1 +)</span>
+				</label>
+				<span id="jform_FIELDNAME_container">
+					<input id="jform_FIELDNAME" type="text" name="jform[FIELDNAME]" value="0"/><span id="jform_FIELDNAME_remove" class="dinamicfield_remove">Apaga</span>
+					<input id="jform_FIELDNAME1" type="text" name="jform[FIELDNAME1]" value="0"/><span id="jform_FIELDNAME_remove1" class="dinamicfield_remove">Apaga</span> 
+				</span>
+			</li>
+			<li>
+				<label id="jform_FIELDNAME_TWO-lbl" class="" for="jform_telefones" aria-invalid="false">
+					Telefone
+					<span id="jform_FIELDNAME_TWO_new" class="dinamicfield_new"> (1 +)</span>
+				</label>
+				<span id="jform_FIELDNAME_TWO_container">
+					<input id="jform_FIELDNAME_TWO" type="text" name="jform[FIELDNAME]" value="0"/><span id="jform_FIELDNAME_TWO_remove" class="dinamicfield_remove">Apaga</span>
+					<input id="jform_FIELDNAME1_TWO" type="text" name="jform[FIELDNAME1]" value="0"/><span id="jform_FIELDNAME_TWO_remove1" class="dinamicfield_remove1">Apaga</span> 
+				</span>
+			</li>
+		</ul>
+
+	</body> 
+</html>

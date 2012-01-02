@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>#2 - JSON Request e imprime em div 2</title>
+		<script src="../../../3rd/mootools-core-1.4.2-full-nocompat.js"></script>
+	</head>
+	<body>
+		<div id="json-output">Sim, mestre! O que deseja?</div>
+		<script>
+			window.addEvent('domready', function(){
+				
+				
+				
+				
+				/**
+				 * Cria uma tabela em HTML baseada em uma entrada JSON
+				 * 
+				 * @param JSONUrl O enderedo de onde os dados devem ser pegos
+				 * @param OutputElement O id do elemento que sera usado para imprimir o resultado
+				 *
+				 * @return void Imprime no elemento de ID OutputElement o O resultado de JSONUrl
+				 */
+				function jsonTableManager(JSONUrl, OutputElement){
+					new Request.JSON({url: JSONUrl, onSuccess: function(ola){
+							document.id(OutputElement).innerHTML = '';//@todo resolver para que ele limpe o conteudo
+							//document.id(OutputElement).
+							Array.each(ola, function(item, i){
+								document.id(OutputElement).adopt(new Element('div', {id: OutputElement + i, text: item.name}));							
+								console.log(item.id, item.name, item.age, item.sex, item.published, item.datetime);
+							});
+						}}).get({});	
+				}
+				
+				//jsonTableManager('jsonoutput.php', 'json-output');
+				
+				
+				function jsonCloseButton(CloseElement){
+					var button;
+					button = '<span onClick="document.id(\''+ CloseElement + '\')">X</span>'
+				}
+
+			
+			
+				/**
+				 * Cria uma tabela em HTML baseada em uma entrada JSON
+				 * 
+				 * @param JSONUrl O enderedo de onde os dados devem ser pegos
+				 * @param OutputElement O id do elemento que sera usado para imprimir o resultado
+				 *
+				 * @return void Imprime no elemento de ID OutputElement o O resultado de JSONUrl
+				 */
+				function jsonToTable(UrlParams, OutputParams){
+					console.log(UrlParams,OutputParams);
+				}
+			
+				var UrlParams = {
+					url:'jsonoutput.php', //URL to access JSON
+					limitStart: null, //Param of limit Start
+					limitEnd: null //Param of limit Start
+				};
+				var OutputParams = {
+					id: 'json-output',
+					table: {
+						tableId: null, //id of created table
+						tableClass: null, //class of create table
+						theaderId: null,
+						theaderClass: null,
+						trIdPrefix: null,
+						trOddClass: null,
+						trEvenClass: null
+					}
+				};
+			
+				jsonToTable(UrlParams,OutputParams);
+			
+			
+			});
+		</script>
+
+
+		<table>
+			<thead><tr></tr></thead>
+			<tbody></tbody>
+			<tfoot></tfoot>
+		</table>
+
+
+	</body> 
+</html>
